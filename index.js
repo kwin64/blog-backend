@@ -45,4 +45,4 @@ app.post('/upload', upload.single('image'), (req, res) => {
 	})
 })
 
-app.listen(process.env.PORT || 5080, () => console.log(`server started on ${process.env.PORT}`))
+app.listen(process.env.PORT, () => console.log(`server started on ${process.env.PORT}`))
