@@ -31,9 +31,7 @@ app.use(express.json())
 app.use(
 	cors({
 		credentials: true,
-		// origin: process.env.CLIENT_URL
 		origin: '*'
-
 	})
 )
 app.use('/uploads', express.static('uploads'))
