@@ -32,7 +32,7 @@ app.use(express.json())
 app.use(
 	cors({
 		credentials: true,
-		origin: ['https://blog-pyqah71db-kwin64.vercel.app']
+		origin: ['https://blog-beryl-phi.vercel.app/posts']
 	})
 )
 
