@@ -35,13 +35,13 @@ app.use(express.json())
 // 		origin: /\.herokuapp\.com$/
 // 	})
 // )
-app.use(cors());
+app.use(cors())
 
 app.use('/uploads', express.static('uploads'))
 
 //Routes
-app.use('auth', authRoute)
-app.use('posts', postsRoute)
+app.use('auth', cors(), authRoute)
+app.use('posts', cors(), postsRoute)
 app.post('upload', upload.single('image'), (req, res) => {
 	res.json({
 		url: `/uploads/${req.file.originalname}`
