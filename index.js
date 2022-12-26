@@ -43,7 +43,7 @@ app.use('/auth', authRoute)
 app.use('/posts', postsRoute)
 app.post('/uploads', upload.single('image'), (req, res) => {
 	res.json({
-		url: `/uploads/${req.file.originalname}`
+		url: `uploads/${req.file.originalname}`
 	})
 })
 
