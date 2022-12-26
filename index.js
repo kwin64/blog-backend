@@ -36,12 +36,12 @@ app.use(
 	})
 )
 
-app.use('/uploads', express.static('uploads'))
+app.use('uploads', express.static('uploads'))
 
 //Routes
 app.use('/auth', authRoute)
 app.use('/posts', postsRoute)
-app.post('/upload', upload.single('image'), (req, res) => {
+app.post('upload', upload.single('image'), (req, res) => {
 	res.json({
 		url: `uploads/${req.file.originalname}`
 	})
