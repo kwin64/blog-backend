@@ -29,19 +29,19 @@ const storage = multer.diskStorage({
 const upload = multer({ storage })
 app.use(express.json())
 
-// app.use(
-// 	cors({
-// 		credentials: true,
-// 		origin: /\.herokuapp\.com$/
-// 	})
-// )
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-  next();
-});
-app.use(cors());
+app.use(
+	cors({
+		credentials: true,
+		origin: '*'
+	})
+)
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+//   next();
+// });
+// app.use(cors());
 
 app.use('/uploads', express.static('uploads'))
 
