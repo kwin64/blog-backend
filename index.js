@@ -35,13 +35,19 @@ app.use(express.json())
 // 		origin: /\.herokuapp\.com$/
 // 	})
 // )
-app.use(cors())
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  next();
+});
+app.use(cors());
 
 app.use('/uploads', express.static('uploads'))
 
 //Routes
-app.use('auth', cors(), authRoute)
-app.use('posts', cors(), postsRoute)
+app.use('auth', authRoute)
+app.use('posts', postsRoute)
 app.post('upload', upload.single('image'), (req, res) => {
 	res.json({
 		url: `/uploads/${req.file.originalname}`
