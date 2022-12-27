@@ -32,12 +32,11 @@ app.use(express.json())
 app.use(
 	cors({
 		credentials: true,
-		origin: ['https://blog-beryl-phi.vercel.app']
+		origin: ['https://blog-beryl-phi.vercel.app','http://localhost:3000']
 	})
 )
 
 app.use('uploads', express.static('uploads'))
-
 //Routes
 app.use('/auth', authRoute)
 app.use('/posts', postsRoute)
