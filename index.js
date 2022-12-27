@@ -15,6 +15,13 @@ mongoose
 	.catch(err => console.log('db error', err))
 
 const app = express()
+app.use(
+	cors({
+		credentials: true,
+		origin: ['https://blog-beryl-phi.vercel.app','http://localhost:3000']
+	})
+)
+
 const storage = multer.diskStorage({
 	destination: (_, __, cb) => {
 		if (!fs.existsSync('uploads')) {
@@ -29,12 +36,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage })
 app.use(express.json())
 
-app.use(
-	cors({
-		credentials: true,
-		origin: ['https://blog-beryl-phi.vercel.app','http://localhost:3000']
-	})
-)
+
 
 app.use('/uploads', express.static('uploads'))
 //Routes
@@ -42,7 +44,7 @@ app.use('/auth', authRoute)
 app.use('/posts', postsRoute)
 app.post('/uploads', upload.single('image'), (req, res) => {
 	res.json({
-		url: `/${req.file.originalname}`
+		url: `uploads/${req.file.originalname}`
 	})
 })
 
