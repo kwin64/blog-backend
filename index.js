@@ -18,7 +18,8 @@ const app = express()
 app.use(
 	cors({
 		credentials: true,
-		origin: ['https://blog-beryl-phi.vercel.app','http://localhost:3000']
+		origin: ['*']
+		// origin: ['https://blog-beryl-phi.vercel.app','http://localhost:3000']
 	})
 )
 
